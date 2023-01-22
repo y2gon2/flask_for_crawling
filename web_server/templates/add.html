@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('show').style.display = 'block';
+        document.getElementById('hide').style.display = 'none';
+    }
+</script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>네이버 뉴스 크롤링</title>
+</head>
+<body>
+
+<h3>1. (신규) 검색 단어 등록</h3>
+
+<form action="/end", method="post">
+  <p>
+    <label for="email"> e - mail :</label>
+    <input type="email" id="email" name="email">
+  </p>
+  <p>
+    <label for="word">검색단어:</label>
+    <input type="text" id="word" name="word">
+    <br>
+    (입력한 단어가 기존에 등록한 단어와 동일할 경우 한번만 처리됩니다.)
+  </p>
+  <p>
+    <input type="text" id="mode" name="mode" value="add" style="display:none">
+  </p>
+  <p>
+    <input type="submit" value="Submit">
+  </p>
+</form>
+
+</body>
+</html>
