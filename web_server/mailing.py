@@ -16,12 +16,12 @@ def send(email, code):
 
     # 보낼 메세지 설정
     msg = MIMEMultipart()
-    msg["Subject"] = "주식 종목 (%s) 크로링 결과 자료 송부합니다." % corp_name
+    msg["Subject"] = "주식 종목 (%s) 크로링 결과 자료 송부합니다." % code
     msg["From"] = "y2gon2@gmail.com"
     msg["To"] = email
 
     msg.attach(MIMEText(code, " : 유첨파일 참조"))
-    file_path = "data/%s.txt" % code
+    file_path = "./web_server/data/%s.txt" % code
     file = open(file_path, "rb")
     part = MIMEApplication(
         file.read(),
