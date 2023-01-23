@@ -1,11 +1,28 @@
-from flask import Blueprint, url_for, request, render_template
+from flask import Blueprint, request, render_template
 from web_server import db_controller
+from web_server.stock_crawling import stock_crawling
 
 bp = Blueprint('main', __name__, url_prefix='/')
 
 @bp.route('/')
 def index():
     return render_template('menu.html')
+
+@bp.route('/stock', method=['POST'])
+def stock():
+    email = request.form['email']
+    stock_code = request.form['stock_code']
+
+    if len(stock_code) == 6:
+        return '종목 코드 6자리를 모두 입력해주시기 바랍니다.'
+    else:
+        result = stock_crawling(stock_code)
+
+        if result.get('code') == 'None':
+            return '입력하신 종목 코드에 대한 주식을 찾을수 없습니다. 코드를 재학인하시여 입력해주시기 바랍니다.'
+        else:
+            return str(result)
+
 
 @bp.route('/add')
 def add():
