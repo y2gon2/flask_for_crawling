@@ -1,6 +1,8 @@
 from flask import Blueprint, request, render_template
 from web_server import db_controller
 from web_server.stock_crawling import stock_crawling
+from web_server.mailing import send
+from web_server.file_control import save_file
 
 bp = Blueprint('main', __name__, url_prefix='/')
 
@@ -19,9 +21,12 @@ def stock():
         result = stock_crawling(stock_code)
 
         if result.get('code') == 'None':
-            return '입력하신 종목 코드에 대한 주식을 찾을수 없습니다. 코드를 재학인하시여 입력해주시기 바랍니다.'
+            return '입력하신 종목 코드에 대한 주식을 찾을수 없습니다. 코드를 재학인 해주시기 바랍니다.'
         else:
-            return str(result)
+            corp_name = result.get('corp name')
+            save_file(result, corp_name)
+            send(email, corp_name)
+            return '입력하신 메일 주소로 해당 파일을 송부하였습니다. 이용해 주셔서 감사합니다.'
 
 
 @bp.route('/add')
