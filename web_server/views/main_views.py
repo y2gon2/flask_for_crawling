@@ -13,7 +13,7 @@ def stock():
     email = request.form['email']
     stock_code = request.form['stock_code']
 
-    if len(stock_code) == 6:
+    if len(stock_code) != 6:
         return '종목 코드 6자리를 모두 입력해주시기 바랍니다.'
     else:
         result = stock_crawling(stock_code)
