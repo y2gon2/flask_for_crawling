@@ -8,7 +8,7 @@ bp = Blueprint('main', __name__, url_prefix='/')
 def index():
     return render_template('menu.html')
 
-@bp.route('/stock', method=['POST'])
+@bp.route('/stock', methods=['POST'])
 def stock():
     email = request.form['email']
     stock_code = request.form['stock_code']
