@@ -21,7 +21,7 @@ def send(email, code):
     msg["To"] = email
 
     msg.attach(MIMEText(code, " : 유첨파일 참조"))
-    file_path = "data\\%s.txt" % code
+    file_path = "data/%s.txt" % code
     file = open(file_path, "rb")
     part = MIMEApplication(
         file.read(),
