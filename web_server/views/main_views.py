@@ -23,9 +23,9 @@ def stock():
         if result.get('code') == 'None':
             return '입력하신 종목 코드에 대한 주식을 찾을수 없습니다. 코드를 재학인 해주시기 바랍니다.'
         else:
-            corp_name = result.get('corp name')
-            save_file(result, corp_name)
-            send(email, corp_name)
+            code = result.get('code')
+            save_file(result, code)
+            send(email, code)
             return '입력하신 메일 주소로 해당 파일을 송부하였습니다. 이용해 주셔서 감사합니다.'
 
 

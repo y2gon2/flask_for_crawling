@@ -1,9 +1,7 @@
 
-
-
-def save_file(result, corp_name):
-    path = "data/%s.txt" % corp_name
+def save_file(result, code):
+    path = "data/%s.txt" % code
     with open(path, 'w') as f:
         f.write(str(result))
 
-save_file({"code":"1234"}, "삼성전자")
+# save_file({"code":"1234"}, "삼성전자")

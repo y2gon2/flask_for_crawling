@@ -4,7 +4,7 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-def send(email, corp_name):
+def send(email, code):
     # 세션설정
     s = smtplib.SMTP("smtp.gmail.com", 587)
 
@@ -20,8 +20,8 @@ def send(email, corp_name):
     msg["From"] = "y2gon2@gmail.com"
     msg["To"] = email
 
-    msg.attach(MIMEText(corp_name, " : 유첨파일 참조"))
-    file_path = "data\\%s.txt" % corp_name
+    msg.attach(MIMEText(code, " : 유첨파일 참조"))
+    file_path = "data\\%s.txt" % code
     file = open(file_path, "rb")
     part = MIMEApplication(
         file.read(),
