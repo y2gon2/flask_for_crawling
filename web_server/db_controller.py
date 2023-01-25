@@ -8,17 +8,23 @@ def identify_email(email):
         return True
 
 
-def new_email(email, word):
+def new_email(email, word, time):
     DB.insert_one({
         "email": email,
+        "time": time,
         "words": [word, ]
     })
 
 
-def push_word(email, word):
+def push_word(email, word, time):
     DB.update_one(
         {"email": email},
         {"$addToSet": {"words": word}}
+    )
+
+    DB.update_one(
+        {"email": email},
+        {"$set": {"time": time}}
     )
 
 

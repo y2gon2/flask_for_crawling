@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<h3>2. (작업 중) 검색 단어 삭제</h3>
+<h3>2. 검색 단어 삭제</h3>
 
 <form action="/end", method="post">
   <p>
@@ -26,10 +26,16 @@
     <label for="word">삭제단어:</label>
     <input type="text" id="word" name="word">
     <br>
-    (삭제 요청 단어가 기존에 등록된 단어 중에 없다면, 해당 단어는 기존과 같이 미등록 단어로 서비스되지 않습니다.)
+    <fieldset id="news-fieldset">
+      <small>
+        삭제 요청 단어가 기존에 등록된 단어 중에 없다면, 해당 단어는 기존과 같이 미등록 단어로 서비스되지 않습니다. <br>
+      </small>
+    </fieldset>
+
   </p>
   <p>
       <input type="text" id="mode" name="mode" value="del" style="display:none">
+      <input type="text" id="time" name="time" value="none" style="display:none">
   </p>
   <p>
     <input type="submit" value="Submit">

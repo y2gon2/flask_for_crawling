@@ -46,18 +46,19 @@ def success():
     mode = request.form['mode']
     email = request.form['email']
     word = request.form['word']
-    # print(mode, ':', email, ':', word)
+    time = request.form['time']
+    print(time)
 
     if db_controller.identify_email(email):
         if mode == "add":
-            db_controller.push_word(email, word)
+            db_controller.push_word(email, word, time)
         elif mode == "del":
             db_controller.pull_word(email, word)
         else:
             db_controller.del_email(email)
     else:
         if mode == "add":
-            db_controller.new_email(email, word)
+            db_controller.new_email(email, word, time)
         else:
             return '입력하신 e-mail 대한 기존 등록 정보가 없습니다.'
 
